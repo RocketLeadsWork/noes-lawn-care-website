@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Appointment | Noe’s Lawn Care</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Use same fonts and base CSS from index for consistency -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { margin:0; font-family:'Montserrat', sans-serif; background-color:#f9f9f9; color:#333; }
+        .container { max-width: 800px; margin: 40px auto; padding:20px; }
+        h1 { font-family:'Playfair Display', serif; color:#3FA34D; text-align:center; }
+        form { display:flex; flex-direction:column; gap:10px; }
+        input, select, textarea { padding:12px 15px; border:1px solid #ccc; border-radius:8px; font-family:'Montserrat', sans-serif; }
+        textarea { resize:vertical; min-height:120px; }
+        button { background-color:#3FA34D; color:#fff; padding:12px 15px; border:none; border-radius:8px; font-size:1.1em; cursor:pointer; }
+        button:hover { background-color:#2A793C; }
+        a { color:#3FA34D; text-decoration:none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Book an Appointment</h1>
+        <form onsubmit="alert('Thank you! Your appointment request has been submitted.'); return false;">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="tel" name="phone" placeholder="Your Phone Number" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <select name="service" required>
+                <option value="" disabled selected>Select Service</option>
+                <option value="Mowing &amp; Edging">Mowing &amp; Edging</option>
+                <option value="Tree &amp; Shrub Trimming">Tree &amp; Shrub Trimming</option>
+                <option value="Garden &amp; Mulch Work">Garden &amp; Mulch Work</option>
+                <option value="Junk &amp; Yard Cleanups">Junk &amp; Yard Cleanups</option>
+            </select>
+            <input type="date" name="date" required>
+            <textarea name="message" placeholder="Additional Details"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        <p><a href="index.html">← Back to Home</a></p>
+    </div>
+</body>
+</html>
