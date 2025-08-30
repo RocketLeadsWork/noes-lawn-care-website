@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noe’s Lawn Care | noeslawncare.com</title>
+    <style>
+        :root {
+            --primary: #3FA34D; /* primary green */
+            --secondary: #eafce7; /* light green background */
+            --dark: #2A793C; /* darker green for accents */
+            --text: #333; /* dark text */
+            --light: #f9f9f9; /* light background */
+        }
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+        header {
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: var(--primary);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        /*
+         * The hero section uses a photograph as its backdrop. A semi‑transparent linear gradient
+         * overlays the image to maintain contrast for the text without sacrificing the beauty of
+         * the lawn scene.  `background-size: cover` ensures the picture always fills the hero
+         * area, while `background-position: center` keeps the focal point centred on large
+         * screens and mobile devices.  If you swap out the file name below, keep the gradient
+         * definition before the `url()` so the overlay applies correctly.
+         */
+        .hero {
+            /* Use a wide hero image as the background. The linear gradient overlay has been
+             * removed so the photo itself is visible. A minimum height is set to ensure
+             * enough vertical space to show the picture on all devices. Flexbox centers the
+             * headline and button within the hero. */
+            background-image: url('https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&h=800');
+            background-size: cover;
+            background-position: center;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin: 10px 0 30px;
+        }
+        .hero .cta-button {
+            padding: 15px 30px;
+            background-color: #fff;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .hero .cta-button:hover {
+            background-color: var(--secondary);
+        }
+        .services {
+            padding: 60px 20px;
+            background-color: var(--secondary);
+        }
+        .services h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--dark);
+        }
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .service-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .service-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        .service-card h3 {
+            margin-top: 0;
+            color: var(--dark);
+        }
+        .service-card p {
+            font-size: 0.95em;
+            margin: 10px 0 20px;
+        }
+        .service-card .card-button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: var(--primary);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .service-card .card-button:hover {
+            background-color: var(--dark);
+        }
+        .about {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .about h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .about p {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+        .reviews {
+            padding: 60px 20px;
+            background-color: var(--secondary);
+        }
+        .reviews h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--dark);
+        }
+        .review {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .review p {
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+        .review .author {
+            font-weight: bold;
+            color: var(--dark);
+        }
+        .cta-section {
+            background-color: var(--dark);
+            color: #fff;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .cta-section h2 {
+            margin-bottom: 20px;
+        }
+        .cta-section a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #fff;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .cta-section a:hover {
+            background-color: var(--secondary);
+        }
+        .contact {
+            padding: 60px 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+        .contact h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .contact p {
+            text-align: center;
+            margin: 5px 0;
+        }
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2em; }
+            nav ul li { margin-left: 10px; }
+            .service-card { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Noe’s Lawn Care</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--
+      The hero section now uses a background image to immediately convey the lush, green results
+      clients can expect from our services. A linear‑gradient overlay keeps the white text legible
+      against the photo.  The image file lives alongside this HTML document in the shared
+      directory and is loaded with a relative path so it will work when hosted on
+      noeslawncare.com.  If you choose to replace the hero image later, simply replace the
+      `pexels-photo-17208219.jpeg` file in the same folder.
+    -->
+    <section class="hero" id="home">
+        <h1>Reliable Lawn Care in Richmond, TX</h1>
+        <p>Professional mowing, trimming, cleanups & landscaping to keep your yard looking its best.</p>
+        <a href="#contact" class="cta-button">Book Your Service</a>
+    </section>
+
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/6728926/pexels-photo-6728926.jpeg?auto=compress&cs=tinysrgb&h=200" alt="Person mowing lawn">
+                <h3>Mowing &amp; Edging</h3>
+                <p>Keep your lawn sharp and healthy with our expert mowing and edging services.</p>
+                <a href="#contact" class="card-button">Book Now</a>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&h=200" alt="Manicured home landscape">
+                <h3>Tree &amp; Shrub Trimming</h3>
+                <p>Shape and maintain your outdoor spaces with precise trimming of trees and shrubs.</p>
+                <a href="#contact" class="card-button">Book Now</a>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/572007/pexels-photo-572007.jpeg?auto=compress&cs=tinysrgb&h=200" alt="Close‑up of green grass">
+                <h3>Garden &amp; Mulch Work</h3>
+                <p>Refresh your flower beds with new mulch and garden care that adds curb appeal.</p>
+                <a href="#contact" class="card-button">Book Now</a>
+            </div>
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/17208219/pexels-photo-17208219.jpeg?auto=compress&cs=tinysrgb&h=200" alt="Open grassy yard with trees">
+                <h3>Junk &amp; Yard Cleanups</h3>
+                <p>Hauling and clearing services to give your yard a clean, fresh start.</p>
+                <a href="#contact" class="card-button">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h2>About Us</h2>
+        <p>
+            At Noe’s Lawn Care, we’re a locally owned family business serving Richmond, TX and nearby areas. We take pride in
+            providing reliable, affordable, and professional lawn services that keep your property looking its best. Whether you
+            need weekly mowing or a one-time cleanup, we’ve got you covered. Our mission is to make your yard a place of beauty
+            and relaxation.
+        </p>
+    </section>
+
+    <section class="reviews">
+        <h2>What Our Customers Say</h2>
+        <div class="review">
+            <p>“Noe’s Lawn Care transformed my yard! Fast, affordable, and professional.”</p>
+            <div class="author">– Maria G.</div>
+        </div>
+        <div class="review">
+            <p>“Great attention to detail and always on time. Highly recommended!”</p>
+            <div class="author">– James T.</div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Keep Your Lawn Looking Its Best Year‑Round</h2>
+        <a href="#contact">Call or Book Online Now</a>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p>📞 Phone: (713) 550‑7389</p>
+        <p>📧 Email: info@noeslawncare.com</p>
+        <p>📍 Service Area: Richmond, Rosenberg, Sugar Land, Katy</p>
+        <p>We’d love to hear from you! Contact us for a free estimate or to schedule your lawn care service.</p>
+    </section>
+
+    <footer>
+        Noe’s Lawn Care © 2025 | <a href="https://noeslawncare.com" style="color:inherit;text-decoration:underline;">noeslawncare.com</a> | Serving Richmond, TX and surrounding areas
+    </footer>
+</body>
+</html>
