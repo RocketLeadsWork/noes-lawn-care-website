@@ -1,9 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noe’s Lawn Care | noeslawncare.com</title>
+    <!-- Google Fonts for improved typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #3FA34D; /* primary green */
@@ -14,10 +17,31 @@
         }
         body {
             margin: 0;
-            font-family: 'Arial', sans-serif;
+            /* Use Montserrat as the base font for a modern look */
+            font-family: 'Montserrat', sans-serif;
             color: var(--text);
             background-color: var(--light);
             line-height: 1.6;
+        }
+        /* Use Playfair Display for all headings to evoke a premium feel */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Top bar styling for operating hours and phone number */
+        .top-bar {
+            background-color: var(--primary);
+            color: #fff;
+            font-size: 0.9em;
+            padding: 5px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 15px;
         }
         header {
             background-color: #fff;
@@ -81,24 +105,62 @@
             text-align: center;
             padding: 80px 20px;
         }
-        .hero h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+
+        /*
+         * The hero text sits inside a dedicated container so we can overlay a
+         * translucent shape behind it.  The pseudo‑element generated on
+         * `.hero-content::before` creates a rounded rectangle that subtly
+         * separates the copy from the photo without obscuring the image.  It
+         * scales relative to the content and uses a slight blur for a softer
+         * edge.
+         */
+        .hero-content {
+            position: relative;
+            display: inline-block;
+            padding: 40px 30px;
         }
-        .hero p {
-            font-size: 1.2em;
-            margin: 10px 0 30px;
+
+        .hero-content::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 115%;
+            height: 115%;
+            background-color: rgba(255, 255, 255, 0.25);
+            border-radius: 25px;
+            z-index: -1;
+            filter: blur(4px);
         }
-        .hero .cta-button {
+        /* Buttons container inside the hero section */
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .cta-buttons a {
+            display: inline-block;
             padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .cta-buttons .primary {
+            background-color: var(--primary);
+            color: #fff;
+        }
+        .cta-buttons .primary:hover {
+            background-color: var(--dark);
+        }
+        .cta-buttons .secondary {
             background-color: #fff;
             color: var(--primary);
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            border: 2px solid var(--primary);
         }
-        .hero .cta-button:hover {
+        .cta-buttons .secondary:hover {
             background-color: var(--secondary);
         }
         .services {
@@ -240,6 +302,11 @@
     </style>
 </head>
 <body>
+    <!-- Top bar with operating hours and phone number -->
+    <div class="top-bar">
+        <span>Open today from 8:00am – 7:00pm</span>
+        <span>Call Today: <a href="tel:713-550-7389">713‑550‑7389</a></span>
+    </div>
     <header>
         <nav>
             <div class="logo">Noe’s Lawn Care</div>
@@ -259,10 +326,24 @@
       directory and is loaded with a relative path so it will work when hosted on
       noeslawncare.com.  If you choose to replace the hero image later, simply replace the
       `pexels-photo-17208219.jpeg` file in the same folder.
-<section class="hero" idid="home">
-        <h1>Beautiful Lawns, Happy Homes</h1>
-        <p>Professional mowing, trimming, cleanups & landscaping to keep your yard looking its best.</p>
-        <a href="#contact" class="cta-button">Book Your Service</a>
+    -->
+    <section class="hero" id="home">
+        <!--
+          Wrap the hero content in its own container so we can position a custom
+          shape behind it.  This decorative block subtly separates the text
+          from the background image, creating a high‑end feel reminiscent of
+          professional landscaping sites.  See the corresponding CSS below for
+          how the ::before pseudo‑element generates the translucent rounded
+          rectangle.
+        -->
+        <div class="hero-content">
+            <h1>Beautiful Lawns, Happy Homes</h1>
+            <p>Premium Quality Lawn Care at Budget-Friendly Rates</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="primary">Book an Appointment</a>
+                <a href="tel:713-550-7389" class="secondary">Call Today</a>
+            </div>
+        </div>
     </section>
 
     <section class="services" id="services">
